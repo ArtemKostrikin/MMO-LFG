@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto bg-slate-800 p-8 rounded-xl border border-slate-700">
+    <h1 class="text-2xl font-bold mb-6">{% if form.instance.pk %}Редактировать{% else %}Создать{% endif %} объявление</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="space-y-4 text-slate-900">
+            {{ form.media }}
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="mt-6 bg-green-600 hover:bg-green-700 text-white px-8 py-2 rounded font-bold uppercase tracking-wider">
+            Сохранить
+        </button>
+    </form>
+</div>
+<style>
+    /* Фикс для отображения меток формы в темной теме */
+    p label { color: white; display: block; margin-bottom: 5px; font-weight: bold; }
+    p { margin-bottom: 20px; }
+</style>
+{% endblock %}
